@@ -5,18 +5,18 @@ import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class StorageService {
 
     private final Map<UUID, Product> products = new HashMap<>();
     private final Map<UUID, Article> articles = new HashMap<>();
+    private final Map<UUID, Product> availableProducts = new HashMap<>();
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(availableProducts.get(id));
+    }
 
     public Collection<Article> getAllArticles() {
         return Collections.unmodifiableCollection(articles.values());
