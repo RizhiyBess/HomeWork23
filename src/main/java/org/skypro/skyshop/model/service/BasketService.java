@@ -6,10 +6,12 @@ import org.skypro.skyshop.model.basket.UserBasket;
 import org.skypro.skyshop.model.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+@SessionScope
 @Service
 public class BasketService {
 
