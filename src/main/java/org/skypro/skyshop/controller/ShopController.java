@@ -8,6 +8,7 @@ import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.search.SearchResult;
 import org.skypro.skyshop.model.service.BasketService;
 import org.skypro.skyshop.model.service.SearchService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,6 +49,7 @@ public class ShopController {
     }
     @GetMapping("/basket/{id}")
     public String addProduct(@PathVariable("id") UUID id){
+        basketService.addToCart(id);
             return "Продукт успешно добавлен";
     }
 
