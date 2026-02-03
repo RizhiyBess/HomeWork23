@@ -10,7 +10,7 @@ import java.util.UUID;
 @Component
 public class ProductBasket {
 
-    private final Map<UUID, Integer> products = new HashMap<>();
+    private static final Map<UUID, Integer> products = new HashMap<>();
 
     public void addProduct(UUID productId) {
         if (!products.containsKey(productId)) {
@@ -21,7 +21,7 @@ public class ProductBasket {
         }
     }
 
-    public Map<UUID, Integer> getProducts() {
+    public static Map<UUID, Integer> getProducts() {
         return Collections.unmodifiableMap(products);
     }
 }

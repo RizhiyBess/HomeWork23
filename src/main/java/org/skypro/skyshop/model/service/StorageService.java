@@ -6,16 +6,16 @@ import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class StorageService {
 
-    private final Map<UUID, Product> products = new HashMap<>();
-    private final Map<UUID, Article> articles = new HashMap<>();
-    private final Map<UUID, Product> availableProducts = new HashMap<>();
+    private final Map<UUID, Product> products = new ConcurrentHashMap<>();
+    private final Map<UUID, Article> articles = new ConcurrentHashMap<>();
 
     public Optional<Product> getProductById(UUID id) {
-        return Optional.ofNullable(availableProducts.get(id));
+        return Optional.ofNullable(products.get(id));
     }
 
     public Collection<Article> getAllArticles() {
